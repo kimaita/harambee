@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"  spacing="15.0" style="-fx-background-color: transparent;"
+      xmlns="http://javafx.com/javafx/25" fx:controller="com.kimaita.harambee.controllers.ReportsController">
+    <padding>
+        <Insets bottom="30.0" left="40.0" right="40.0" top="30.0"/>
+    </padding>
+    <children>
+        <!-- Local Title -->
+        <Label text="Reports &amp; Receipts" textFill="#2d3447">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </Label>
+
+        <Separator prefWidth="200.0"/>
+
+        <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <tabs>
+
+                <!-- TAB 1: DONATION RECEIPTS -->
+                <Tab text="Issue Receipts">
+                    <content>
+                        <VBox spacing="15.0">
+                            <padding>
+                                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
+                            </padding>
+                            <children>
+                                <Label text="Generate Donation Receipt">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Label>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <Label text="Pledge/Donation ID:"/>
+                                        <TextField fx:id="txtPledgeID" promptText="Enter ID (e.g. PL-102)"/>
+                                        <Button fx:id="btnSearchPledge" mnemonicParsing="false" text="Search"/>
+                                    </children>
+                                </HBox>
+
+                                <!-- Preview Box -->
+                                <VBox style="-fx-background-color: #f4f4f4; -fx-border-color: #cccccc; -fx-border-radius: 5; -fx-background-radius: 5;"
+                                      VBox.vgrow="ALWAYS">
+                                    <padding>
+                                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                                    </padding>
+                                    <children>
+                                        <Label text="Receipt Preview" textFill="#8d8d8d">
+                                            <font>
+                                                <Font name="System Bold" size="12.0"/>
+                                            </font>
+                                        </Label>
+                                        <TextArea fx:id="txtReceiptPreview" editable="false" prefHeight="200.0"
+                                                  prefWidth="200.0" promptText="Receipt details will appear here..."
+                                                  style="-fx-font-family: 'Courier New';" VBox.vgrow="ALWAYS"/>
+                                    </children>
+                                </VBox>
+
+                                <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                                    <children>
+                                        <CheckBox fx:id="chkEmailReceipt" mnemonicParsing="false" selected="true"
+                                                  text="Email copy to Donor"/>
+                                        <Button fx:id="btnGeneratePDF" mnemonicParsing="false" prefWidth="150.0"
+                                                style="-fx-background-color: #2D3447;" text="Generate PDF Receipt"
+                                                textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="12.0"/>
+                                            </font>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+
+                <!-- TAB 2: GENERAL REPORTS -->
+                <Tab text="Administrative Reports">
+                    <content>
+                        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+                            <content>
+                                <VBox spacing="25.0">
+                                    <padding>
+                                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
+                                    </padding>
+                                    <children>
+
+                                        <!-- User Specific Reports -->
+                                        <VBox spacing="10.0"
+                                              style="-fx-border-color: #eeeeee; -fx-border-width: 1; -fx-padding: 15;">
+                                            <children>
+                                                <Label text="User Activity Report">
+                                                    <font>
+                                                        <Font name="System Bold" size="14.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label text="Generate activity history for a specific Donor or Recipient."
+                                                       textFill="#797979"/>
+
+                                                <GridPane hgap="10.0" vgap="10.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0"
+                                                                           minWidth="10.0" prefWidth="100.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                           prefWidth="100.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0"
+                                                                           minWidth="10.0" prefWidth="100.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                           prefWidth="100.0"/>
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <Label text="Select User:"/>
+                                                        <ComboBox fx:id="cbReportUser" prefWidth="250.0"
+                                                                  promptText="Select Donor/Recipient"
+                                                                  GridPane.columnIndex="1"/>
+                                                        <Label text="Report Type:" GridPane.columnIndex="2"/>
+                                                        <ComboBox fx:id="cbUserReportType" prefWidth="200.0"
+                                                                  promptText="Donation History / Tax Summary"
+                                                                  GridPane.columnIndex="3"/>
+                                                        <Label text="Date Range:" GridPane.rowIndex="1"/>
+                                                        <HBox spacing="5.0" GridPane.columnIndex="1"
+                                                              GridPane.rowIndex="1">
+                                                            <children>
+                                                                <DatePicker fx:id="dpUserFrom" promptText="From"/>
+                                                                <Label text="-"/>
+                                                                <DatePicker fx:id="dpUserTo" promptText="To"/>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </GridPane>
+                                                <HBox alignment="CENTER_RIGHT">
+                                                    <children>
+                                                        <Button fx:id="btnGenUserReport" mnemonicParsing="false"
+                                                                text="Generate User Report"/>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+
+                                        <Separator prefWidth="200.0"/>
+
+                                        <!-- Analytics / System Wide -->
+                                        <VBox spacing="10.0"
+                                              style="-fx-border-color: #eeeeee; -fx-border-width: 1; -fx-padding: 15;">
+                                            <children>
+                                                <Label text="System Analytics &amp; Inventory Reports">
+                                                    <font>
+                                                        <Font name="System Bold" size="14.0"/>
+                                                    </font>
+                                                </Label>
+                                                <Label text="Generate aggregate reports for administrative analysis."
+                                                       textFill="#797979"/>
+
+                                                <GridPane hgap="10.0" vgap="10.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0"
+                                                                           minWidth="10.0" prefWidth="120.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                           prefWidth="100.0"/>
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <Label text="Report Category:"/>
+                                                        <ComboBox fx:id="cbAdminReportType" prefWidth="300.0"
+                                                                  promptText="Inventory Turnover / Unfulfilled Requests / Donor Demographics"
+                                                                  GridPane.columnIndex="1"/>
+
+                                                        <Label text="Format:" GridPane.rowIndex="1"/>
+                                                        <HBox spacing="15.0" GridPane.columnIndex="1"
+                                                              GridPane.rowIndex="1">
+                                                            <children>
+                                                                <CheckBox fx:id="chkFormatPDF" mnemonicParsing="false"
+                                                                          selected="true" text="PDF"/>
+                                                                <CheckBox fx:id="chkFormatCSV" mnemonicParsing="false"
+                                                                          text="CSV (Excel)"/>
+                                                            </children>
+                                                        </HBox>
+
+                                                        <Label text="Distribution:" GridPane.rowIndex="2"/>
+                                                        <HBox alignment="CENTER_LEFT" spacing="15.0"
+                                                              GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <children>
+                                                                <CheckBox fx:id="chkEmailAdmin" mnemonicParsing="false"
+                                                                          text="Email to Administrators"/>
+                                                                <CheckBox fx:id="chkSchedule" mnemonicParsing="false"
+                                                                          text="Schedule Monthly"/>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </GridPane>
+
+                                                <HBox alignment="CENTER_RIGHT">
+                                                    <children>
+                                                        <Button fx:id="btnGenAdminReport" mnemonicParsing="false"
+                                                                style="-fx-background-color: #2D3447;"
+                                                                text="Run Analysis" textFill="WHITE"/>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+
+                                    </children>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                    </content>
+                </Tab>
+
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>

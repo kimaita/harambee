@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<?import javafx.geometry.Insets?>-->
+<!--<?import javafx.scene.control.*?>-->
+<!--<?import javafx.scene.layout.*?>-->
+<!--<?import javafx.scene.text.*?>-->
+<!--<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"-->
+<!--             style="-fx-background-color: transparent;"-->
+<!--            xmlns="http://javafx.com/javafx/25" fx:controller="com.kimaita.harambee.controllers.InventoryController">-->
+
+<!--    &lt;!&ndash; Main Content (Center) &ndash;&gt;-->
+<!--    <center>-->
+<!--        <VBox spacing="15.0" BorderPane.alignment="CENTER">-->
+<!--            <padding>-->
+<!--                <Insets bottom="30.0" left="40.0" right="30.0" top="30.0"/>-->
+<!--            </padding>-->
+<!--            <children>-->
+<!--                &lt;!&ndash; Local Title &ndash;&gt;-->
+<!--                <Label text="Inventory Management" textFill="#2d3447">-->
+<!--                    <font>-->
+<!--                        <Font name="System Bold" size="24.0"/>-->
+<!--                    </font>-->
+<!--                </Label>-->
+
+<!--                <Separator prefWidth="200.0"/>-->
+
+<!--                &lt;!&ndash; Search / Toolbar &ndash;&gt;-->
+<!--                <HBox alignment="CENTER_LEFT" spacing="10.0">-->
+<!--                    <children>-->
+<!--                        <Label text="Current Stock">-->
+<!--                            <font>-->
+<!--                                <Font name="System Bold" size="18.0"/>-->
+<!--                            </font>-->
+<!--                        </Label>-->
+<!--                        <Region HBox.hgrow="ALWAYS"/>-->
+<!--                        <TextField fx:id="txtSearch" prefWidth="250.0" promptText="Search items..."/>-->
+<!--                        <Button fx:id="btnRefresh" mnemonicParsing="false" text="Refresh"/>-->
+<!--                    </children>-->
+<!--                </HBox>-->
+
+<!--                &lt;!&ndash; Inventory Table &ndash;&gt;-->
+<!--                <TableView fx:id="tblInventory" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">-->
+<!--                    <columns>-->
+<!--                        <TableColumn fx:id="colID" prefWidth="50.0" text="ID"/>-->
+<!--                        <TableColumn fx:id="colItemName" prefWidth="200.0" text="Item Name"/>-->
+<!--                        <TableColumn fx:id="colCategory" prefWidth="120.0" text="Category"/>-->
+<!--                        <TableColumn fx:id="colQuantity" prefWidth="100.0" style="-fx-alignment: CENTER-RIGHT;"-->
+<!--                                     text="Qty on Hand"/>-->
+<!--                        <TableColumn fx:id="colUnit" prefWidth="75.0" text="Unit"/>-->
+<!--                    </columns>-->
+<!--                    <columnResizePolicy>-->
+<!--                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>-->
+<!--                    </columnResizePolicy>-->
+<!--                </TableView>-->
+
+<!--                <HBox alignment="CENTER_LEFT">-->
+<!--                    <children>-->
+<!--                        <Label text="* Stock levels update automatically via Pledges and Requests." textFill="#838383">-->
+<!--                            <font>-->
+<!--                                <Font name="System Italic" size="12.0"/>-->
+<!--                            </font>-->
+<!--                        </Label>-->
+<!--                    </children>-->
+<!--                </HBox>-->
+<!--            </children>-->
+<!--        </VBox>-->
+<!--    </center>-->
+
+<!--    &lt;!&ndash; Sidebar (Add New Item Definition) &ndash;&gt;-->
+<!--    <right>-->
+<!--        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefWidth="300.0" style="-fx-background-color: transparent;"-->
+<!--                    BorderPane.alignment="CENTER">-->
+<!--            <content>-->
+<!--                <VBox minHeight="640.0" prefWidth="280.0" spacing="15.0"-->
+<!--                      style="-fx-background-color: #f8f9fa; -fx-border-color: #dddddd; -fx-border-width: 0 0 0 1;">-->
+<!--                    <padding>-->
+<!--                        <Insets bottom="20.0" left="20.0" right="20.0" top="30.0"/>-->
+<!--                    </padding>-->
+<!--                    <children>-->
+<!--                        <Label text="Catalog Definition" textFill="#2d3447">-->
+<!--                            <font>-->
+<!--                                <Font name="System Bold" size="16.0"/>-->
+<!--                            </font>-->
+<!--                        </Label>-->
+<!--                        <Label text="Define new item types here. Do not enter stock quantities manually."-->
+<!--                               textFill="#666666" wrapText="true"/>-->
+
+<!--                        <Separator prefWidth="200.0"/>-->
+
+<!--                        <VBox spacing="5.0">-->
+<!--                            <children>-->
+<!--                                <Label text="Item Name:"/>-->
+<!--                                <TextField fx:id="txtNewItemName" promptText="e.g. Paracetamol"/>-->
+<!--                            </children>-->
+<!--                        </VBox>-->
+
+<!--                        <VBox spacing="5.0">-->
+<!--                            <children>-->
+<!--                                <Label text="Category:"/>-->
+<!--                                <ComboBox fx:id="cbNewCategory" editable="true" maxWidth="1.7976931348623157E308"-->
+<!--                                          promptText="Select or Type..."/>-->
+<!--                            </children>-->
+<!--                        </VBox>-->
+
+<!--                        <VBox spacing="5.0">-->
+<!--                            <children>-->
+<!--                                <Label text="Standard Unit:"/>-->
+<!--                                <ComboBox fx:id="cbNewUnit" maxWidth="1.7976931348623157E308"-->
+<!--                                          promptText="e.g. Box / Kg / Liters"/>-->
+<!--                            </children>-->
+<!--                        </VBox>-->
+
+<!--                        <Region VBox.vgrow="ALWAYS"/>-->
+
+<!--                        <Button fx:id="btnAddItem" maxWidth="1.7976931348623157E308" mnemonicParsing="false"-->
+<!--                                prefHeight="40.0" style="-fx-background-color: #2D3447;" text="Add to Catalog"-->
+<!--                                textFill="WHITE">-->
+<!--                            <font>-->
+<!--                                <Font name="System Bold" size="13.0"/>-->
+<!--                            </font>-->
+<!--                        </Button>-->
+<!--                    </children>-->
+<!--                </VBox>-->
+<!--            </content>-->
+<!--        </ScrollPane>-->
+<!--    </right>-->
+<!--</BorderPane>-->
+
+
+<!--<?import javafx.geometry.Insets?>-->
+<!--<?import javafx.scene.control.*?>-->
+<!--<?import javafx.scene.layout.*?>-->
+<!--<?import javafx.scene.text.*?>-->
+
+<!--<ScrollPane xmlns:fx="http://javafx.com/fxml/1"-->
+<!--            xmlns="http://javafx.com/javafx/25"-->
+<!--            fx:controller="com.kimaita.harambee.controllers.InventoryController"-->
+<!--            fitToWidth="true"-->
+<!--            hbarPolicy="NEVER"-->
+<!--            style="-fx-background-color: transparent;">-->
+<!--    <HBox style="-fx-background-color: transparent;">-->
+<!--        <VBox spacing="15.0" HBox.hgrow="ALWAYS">-->
+<!--            <padding>-->
+<!--                <Insets bottom="30.0" left="40.0" right="30.0" top="30.0"/>-->
+<!--            </padding>-->
+<!--            <Label text="Inventory Management" textFill="#2d3447">-->
+<!--                <font>-->
+<!--                    <Font name="System Bold" size="24.0"/>-->
+<!--                </font>-->
+<!--            </Label>-->
+
+<!--            <Separator prefWidth="200.0"/>-->
+
+<!--            &lt;!&ndash; Search / Toolbar &ndash;&gt;-->
+<!--            <HBox alignment="CENTER_LEFT" spacing="10.0">-->
+<!--                <Label text="Current Stock">-->
+<!--                    <font>-->
+<!--                        <Font name="System Bold" size="18.0"/>-->
+<!--                    </font>-->
+<!--                </Label>-->
+<!--                <Region HBox.hgrow="ALWAYS"/>-->
+<!--                <TextField fx:id="txtSearch" prefWidth="250.0" promptText="Search items..."/>-->
+<!--                <Button fx:id="btnRefresh" mnemonicParsing="false" text="Refresh"/>-->
+<!--            </HBox>-->
+
+<!--            &lt;!&ndash; Inventory Table &ndash;&gt;-->
+<!--            <TableView fx:id="tblInventory" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">-->
+<!--                <columns>-->
+<!--                    <TableColumn fx:id="colID" prefWidth="50.0" text="ID"/>-->
+<!--                    <TableColumn fx:id="colItemName" prefWidth="200.0" text="Item Name"/>-->
+<!--                    <TableColumn fx:id="colCategory" prefWidth="120.0" text="Category"/>-->
+<!--                    <TableColumn fx:id="colQuantity" prefWidth="100.0" style="-fx-alignment: CENTER-RIGHT;"-->
+<!--                                 text="Qty on Hand"/>-->
+<!--                    <TableColumn fx:id="colUnit" prefWidth="75.0" text="Unit"/>-->
+<!--                </columns>-->
+<!--                <columnResizePolicy>-->
+<!--                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>-->
+<!--                </columnResizePolicy>-->
+<!--            </TableView>-->
+
+<!--            <HBox alignment="CENTER_LEFT">-->
+<!--                <Label text="* Stock levels update automatically via Pledges and Requests." textFill="#838383">-->
+<!--                    <font>-->
+<!--                        <Font name="System Italic" size="12.0"/>-->
+<!--                    </font>-->
+<!--                </Label>-->
+<!--            </HBox>-->
+<!--        </VBox>-->
+
+<!--        &lt;!&ndash; Sidebar (Add New Item Definition) &ndash;&gt;-->
+<!--        <VBox  prefWidth="300.0" spacing="15.0"-->
+<!--              style="-fx-background-color: #f8f9fa; -fx-border-color: #dddddd; -fx-border-width: 0 0 0 1;">-->
+<!--            <padding>-->
+<!--                <Insets bottom="20.0" left="20.0" right="20.0" top="30.0"/>-->
+<!--            </padding>-->
+<!--            <children>-->
+<!--                <Label text="Catalog Definition" textFill="#2d3447">-->
+<!--                    <font>-->
+<!--                        <Font name="System Bold" size="16.0"/>-->
+<!--                    </font>-->
+<!--                </Label>-->
+<!--                <Label text="Define new item types here. Do not enter stock quantities manually."-->
+<!--                       textFill="#666666" wrapText="true"/>-->
+
+<!--                <Separator prefWidth="200.0"/>-->
+
+<!--                <VBox spacing="5.0">-->
+<!--                    <children>-->
+<!--                        <Label text="Item Name:"/>-->
+<!--                        <TextField fx:id="txtNewItemName" promptText="e.g. Paracetamol"/>-->
+<!--                    </children>-->
+<!--                </VBox>-->
+
+<!--                <VBox spacing="5.0">-->
+<!--                    <children>-->
+<!--                        <Label text="Category:"/>-->
+<!--                        <ComboBox fx:id="cbNewCategory" editable="true" maxWidth="1.7976931348623157E308"-->
+<!--                                  promptText="Select or Type..."/>-->
+<!--                    </children>-->
+<!--                </VBox>-->
+
+<!--                <VBox spacing="5.0">-->
+<!--                    <children>-->
+<!--                        <Label text="Standard Unit:"/>-->
+<!--                        <ComboBox fx:id="cbNewUnit" maxWidth="1.7976931348623157E308"-->
+<!--                                  promptText="e.g. Box / Kg / Liters"/>-->
+<!--                    </children>-->
+<!--                </VBox>-->
+
+<!--                <Region VBox.vgrow="ALWAYS"/>-->
+
+<!--                <Button fx:id="btnAddItem" maxWidth="1.7976931348623157E308" mnemonicParsing="false"-->
+<!--                        prefHeight="40.0" style="-fx-background-color: #2D3447;" text="Add to Catalog"-->
+<!--                        textFill="WHITE">-->
+<!--                    <font>-->
+<!--                        <Font name="System Bold" size="13.0"/>-->
+<!--                    </font>-->
+<!--                </Button>-->
+<!--            </children>-->
+<!--        </VBox>-->
+<!--    </HBox>-->
+<!--</ScrollPane>-->
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: transparent;"
+      xmlns="http://javafx.com/javafx/25"
+      fx:controller="com.kimaita.harambee.controllers.InventoryController"
+>
+    <!-- Main Content (Left/Center - grows to fill space) -->
+    <VBox spacing="15.0" HBox.hgrow="ALWAYS">
+        <padding>
+            <Insets bottom="30.0" left="40.0" right="30.0" top="30.0"/>
+        </padding>
+        <!-- Local Title -->
+        <Label text="Inventory Management" textFill="#2d3447">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </Label>
+
+        <Separator prefWidth="200.0"/>
+
+        <!-- Search / Toolbar -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <Label text="Current Stock">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="txtSearch" prefWidth="250.0" promptText="Search items..."/>
+                <Button fx:id="btnRefresh" mnemonicParsing="false" text="Refresh"/>
+                <Button fx:id="btnDefineItem" mnemonicParsing="false" text="Define Item"
+                        style="-fx-background-color: #2D3447;" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+
+        <!-- Inventory Table -->
+        <TableView fx:id="tblInventory" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colID" prefWidth="50.0" text="ID"/>
+                <TableColumn fx:id="colItemName" prefWidth="200.0" text="Item Name"/>
+                <TableColumn fx:id="colCategory" prefWidth="120.0" text="Category"/>
+                <TableColumn fx:id="colQuantity" prefWidth="100.0" style="-fx-alignment: CENTER-RIGHT;"
+                             text="Qty on Hand"/>
+                <TableColumn fx:id="colUnit" prefWidth="75.0" text="Unit"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+
+        <HBox alignment="CENTER_LEFT">
+            <children>
+                <Label text="* Stock levels update automatically via Pledges and Requests." textFill="#838383">
+                    <font>
+                        <Font name="System Italic" size="12.0"/>
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+    </VBox>
+
+    <!-- Sidebar (Add New Item Definition) - Fixed width on right -->
+    <VBox fx:id="sidebarPane" minHeight="640.0" prefWidth="300.0" spacing="15.0" managed="false" visible="false"
+          style="-fx-background-color: #f8f9fa; -fx-border-color: #dddddd; -fx-border-width: 0 0 0 1;">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="30.0"/>
+        </padding>
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <Label text="Catalog Definition" textFill="#2d3447" HBox.hgrow="ALWAYS">
+                <font>
+                    <Font name="System Bold" size="16.0"/>
+                </font>
+            </Label>
+            <Button fx:id="btnCloseSidebar" mnemonicParsing="false" text="X"
+                    style="-fx-background-color: transparent; -fx-text-fill: #666666; -fx-font-size: 18px; -fx-cursor: hand;"
+                    prefWidth="30.0" prefHeight="30.0"/>
+        </HBox>
+        <Label text="Define new item types here. Do not enter stock quantities manually."
+               textFill="#666666" wrapText="true"/>
+
+        <Separator prefWidth="200.0"/>
+
+        <VBox spacing="5.0">
+            <children>
+                <Label text="Item Name:"/>
+                <TextField fx:id="txtNewItemName" promptText="e.g. Paracetamol"/>
+            </children>
+        </VBox>
+
+        <VBox spacing="5.0">
+            <children>
+                <Label text="Category:"/>
+                <ComboBox fx:id="cbNewCategory" editable="true" maxWidth="1.7976931348623157E308"
+                          promptText="Select or Type..."/>
+            </children>
+        </VBox>
+
+        <VBox spacing="5.0">
+            <children>
+                <Label text="Standard Unit:"/>
+                <ComboBox fx:id="cbNewUnit" maxWidth="1.7976931348623157E308"
+                          promptText="e.g. Box / Kg / Liters"/>
+            </children>
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <Button fx:id="btnAddItem" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                prefHeight="40.0" style="-fx-background-color: #2D3447;" text="Add to Catalog"
+                textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="13.0"/>
+            </font>
+        </Button>
+    </VBox>
+</HBox>

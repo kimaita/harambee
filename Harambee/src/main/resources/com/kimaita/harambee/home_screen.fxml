@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"  style="-fx-background-color: transparent;" spacing="20.0"
+            xmlns="http://javafx.com/javafx/25" fx:controller="com.kimaita.harambee.controllers.HomeController">
+        <padding>
+            <Insets bottom="30.0" left="40.0" right="40.0" top="30.0"/>
+        </padding>
+        <Label text="Dashboard" textFill="#2d3447">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </Label>
+        <Separator prefWidth="200.0"/>
+        <!--    <center>-->
+<!--        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">-->
+            <VBox spacing="20.0">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                </padding>
+                <!-- KPI CARDS ROW -->
+                <HBox spacing="20.0">
+                    <!-- Card 1 -->
+                    <VBox alignment="CENTER_LEFT" prefHeight="100.0" spacing="5.0"
+                          style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0); -fx-background-radius: 5;"
+                          HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                        </padding>
+                        <children>
+                            <Label text="Pending Pledges" textFill="#7c7c7c">
+                                <font>
+                                    <Font size="14.0"/>
+                                </font>
+                            </Label>
+                            <Label fx:id="lblPendingPledges" text="12" textFill="#2196f3">
+                                <font>
+                                    <Font name="System Bold" size="36.0"/>
+                                </font>
+                            </Label>
+                        </children>
+                    </VBox>
+                    <!-- Card 2 -->
+                    <VBox alignment="CENTER_LEFT" prefHeight="100.0" spacing="5.0"
+                          style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0); -fx-background-radius: 5;"
+                          HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                        </padding>
+                        <children>
+                            <Label text="Open Requests" textFill="#7c7c7c">
+                                <font>
+                                    <Font size="14.0"/>
+                                </font>
+                            </Label>
+                            <Label fx:id="lblOpenRequests" text="8" textFill="#ff5722">
+                                <font>
+                                    <Font name="System Bold" size="36.0"/>
+                                </font>
+                            </Label>
+                        </children>
+                    </VBox>
+                    <!-- Card 3 -->
+                    <VBox alignment="CENTER_LEFT" prefHeight="100.0" spacing="5.0"
+                          style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0); -fx-background-radius: 5;"
+                          HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                        </padding>
+                        <children>
+                            <Label text="Items in Stock" textFill="#7c7c7c">
+                                <font>
+                                    <Font size="14.0"/>
+                                </font>
+                            </Label>
+                            <Label fx:id="lblTotalStock" text="1,042" textFill="#4caf50">
+                                <font>
+                                    <Font name="System Bold" size="36.0"/>
+                                </font>
+                            </Label>
+                        </children>
+                    </VBox>
+                </HBox>
+
+                <Separator prefWidth="200.0"/>
+
+                <!-- CHARTS & LISTS ROW -->
+                <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                    <children>
+
+                        <!-- Left Col: Upcoming Deadlines -->
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Upcoming Deadlines (Next 7 Days)">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Label>
+                                <ListView fx:id="listDeadlines" prefHeight="300.0"
+                                          style="-fx-background-radius: 5; -fx-border-color: #dddddd; -fx-border-radius: 5;"/>
+
+                                <Label text="Urgent Inventory Needs">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets top="10.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <ListView fx:id="listLowStock" prefHeight="150.0"
+                                          style="-fx-background-radius: 5; -fx-border-color: #dddddd; -fx-border-radius: 5;"/>
+                            </children>
+                        </VBox>
+
+                        <!-- Right Col: Visual Analytics -->
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Pledge Status Distribution">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Label>
+                                <PieChart fx:id="chartPledgeStatus" prefHeight="250.0"
+                                          style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-color: #dddddd; -fx-border-radius: 5;"
+                                          titleSide="BOTTOM"/>
+
+                                <Label text="Fulfilled Requests (Last 6 Months)">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets top="10.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <BarChart fx:id="chartRequests" prefHeight="200.0"
+                                          style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-color: #dddddd; -fx-border-radius: 5;">
+                                    <xAxis>
+                                        <CategoryAxis side="BOTTOM"/>
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT"/>
+                                    </yAxis>
+                                </BarChart>
+                            </children>
+                        </VBox>
+
+                    </children>
+                </HBox>
+
+            </VBox>
+<!--        </ScrollPane>-->
+        <!--    </center>-->
+</VBox>

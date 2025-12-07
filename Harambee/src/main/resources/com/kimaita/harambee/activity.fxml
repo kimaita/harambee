@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.chart.PieChart?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" spacing="15.0" style="-fx-background-color: transparent;"
+      xmlns="http://javafx.com/javafx/25" fx:controller="com.kimaita.harambee.controllers.ActivityController">
+    <padding>
+        <Insets bottom="30.0" left="40.0" right="40.0" top="30.0"/>
+    </padding>
+    <children>
+        <!-- Local Title -->
+        <Label text="Activity Overview" textFill="#2d3447">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </Label>
+
+        <Separator prefWidth="200.0"/>
+
+        <!-- Main Tab Pane -->
+        <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <tabs>
+
+                <!-- TAB 1: DONATION PLEDGES -->
+                <Tab text="Donation Pledges">
+                    <content>
+                        <VBox spacing="10.0">
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                            </padding>
+                            <children>
+                                <!-- Filter Toolbar -->
+                                <HBox alignment="CENTER_LEFT" spacing="15.0"
+                                      style="-fx-background-color: #f4f4f4; -fx-background-radius: 5;">
+                                    <padding>
+                                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0"/>
+                                    </padding>
+                                    <children>
+                                        <TextField fx:id="txtSearchPledge" prefWidth="250.0"
+                                                   promptText="Search Donor, Item or ID..."/>
+                                        <Separator orientation="VERTICAL"/>
+                                        <Label text="Status:"/>
+                                        <ComboBox fx:id="cbFilterPledgeStatus" prefWidth="150.0"
+                                                  promptText="All Statuses"/>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <Button fx:id="btnViewPledgeDetails" mnemonicParsing="false"
+                                                text="View/Edit Details"/>
+                                    </children>
+                                </HBox>
+
+                                <!-- Pledges Table -->
+                                <TableView fx:id="tblPledges" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colPledgeID" prefWidth="60.0" text="ID"/>
+                                        <TableColumn fx:id="colDonor" prefWidth="180.0" text="Donor"/>
+                                        <TableColumn fx:id="colPledgeDate" prefWidth="100.0" text="Date"/>
+                                        <TableColumn fx:id="colPledgeItems" prefWidth="250.0" text="Items Summary"/>
+                                        <TableColumn fx:id="colDeliveryDate" prefWidth="120.0" text="Delivery Target"/>
+                                        <TableColumn fx:id="colPledgeStatus" prefWidth="120.0" text="Status"/>
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                    </columnResizePolicy>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+
+                <!-- TAB 2: RECIPIENT REQUESTS -->
+                <Tab text="Recipient Requests">
+                    <content>
+                        <VBox spacing="10.0">
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                            </padding>
+                            <children>
+                                <!-- Filter Toolbar -->
+                                <HBox alignment="CENTER_LEFT" spacing="15.0"
+                                      style="-fx-background-color: #f4f4f4; -fx-background-radius: 5;">
+                                    <padding>
+                                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0"/>
+                                    </padding>
+                                    <children>
+                                        <TextField fx:id="txtSearchRequest" prefWidth="250.0"
+                                                   promptText="Search Recipient, Item or ID..."/>
+                                        <Separator orientation="VERTICAL"/>
+                                        <Label text="Status:"/>
+                                        <ComboBox fx:id="cbFilterRequestStatus" prefWidth="150.0"
+                                                  promptText="All Statuses"/>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <Button fx:id="btnViewRequestDetails" mnemonicParsing="false"
+                                                text="View/Edit Details"/>
+                                    </children>
+                                </HBox>
+
+                                <!-- Requests Table -->
+                                <TableView fx:id="tblRequests" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colRequestID" prefWidth="60.0" text="ID"/>
+                                        <TableColumn fx:id="colRecipient" prefWidth="180.0" text="Recipient"/>
+                                        <TableColumn fx:id="colDeadline" prefWidth="100.0" text="Deadline"/>
+                                        <TableColumn fx:id="colRequestItems" prefWidth="250.0" text="Items Needed"/>
+                                        <TableColumn fx:id="colRecurring" prefWidth="80.0" text="Recurring"/>
+                                        <TableColumn fx:id="colRequestStatus" prefWidth="120.0" text="Status"/>
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                    </columnResizePolicy>
+                                </TableView>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+
+                <!-- TAB 3: USER STATISTICS -->
+                <Tab text="Registered Users">
+                    <content>
+                        <VBox spacing="15.0">
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </padding>
+                            <children>
+                                <Label text="User Demographics">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+
+                                <!-- Charts Row -->
+                                <HBox spacing="20.0" prefHeight="300.0">
+                                    <children>
+                                        <VBox HBox.hgrow="ALWAYS" style="-fx-border-color: #dddddd; -fx-border-radius: 5;">
+                                            <children>
+                                                <Label text="Donors vs Recipients" style="-fx-padding: 10;">
+                                                    <font><Font name="System Bold" size="12.0"/></font>
+                                                </Label>
+                                                <PieChart fx:id="chartUserRoles" labelsVisible="true" legendSide="RIGHT" />
+                                            </children>
+                                        </VBox>
+
+                                        <VBox HBox.hgrow="ALWAYS" style="-fx-border-color: #dddddd; -fx-border-radius: 5;">
+                                            <children>
+                                                <Label text="Donor Entity Types" style="-fx-padding: 10;">
+                                                    <font><Font name="System Bold" size="12.0"/></font>
+                                                </Label>
+                                                <PieChart fx:id="chartDonorTypes" labelsVisible="true" legendSide="RIGHT" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <Separator prefWidth="200.0" />
+
+                                <Label text="Recently Registered Users">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+
+                                <TableView fx:id="tblRecentUsers" VBox.vgrow="ALWAYS" prefHeight="250.0">
+                                    <columns>
+                                        <TableColumn fx:id="colUserId" prefWidth="50.0" text="ID" />
+                                        <TableColumn fx:id="colUserName" prefWidth="200.0" text="Name" />
+                                        <TableColumn fx:id="colUserRole" prefWidth="100.0" text="Role" />
+                                        <TableColumn fx:id="colUserEmail" prefWidth="200.0" text="Email" />
+                                        <TableColumn fx:id="colUserDate" prefWidth="150.0" text="Date Joined" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+
+        <!-- Footer/Legend -->
+        <HBox alignment="CENTER_RIGHT" prefHeight="20.0" spacing="20.0"
+              style="-fx-border-color: #dddddd; -fx-border-width: 1 0 0 0;">
+            <padding>
+                <Insets top="10.0"/>
+            </padding>
+            <children>
+                <Label text="Double-click a row to view full details" textFill="#868686">
+                    <font>
+                        <Font name="System Italic" size="12.0"/>
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+
+    </children>
+</VBox>

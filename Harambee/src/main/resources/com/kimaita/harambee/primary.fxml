@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainBorderPane"
+            xmlns="http://javafx.com/javafx/25" fx:controller="com.kimaita.harambee.controllers.PrimaryController">
+
+    <!-- SIDEBAR NAVIGATION -->
+    <left>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background-color: transparent;"
+                    BorderPane.alignment="CENTER">
+        <VBox prefHeight="800.0" prefWidth="250.0" spacing="10.0"
+              style="-fx-background-color: #2D3447;" BorderPane.alignment="CENTER">
+            <!-- Logo / Title Area -->
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="5.0">
+                <padding>
+                    <Insets bottom="20.0" top="20.0"/>
+                </padding>
+                <Label text="HARAMBEE" textFill="#2196f3">
+                    <font>
+                        <Font name="System Bold" size="20.0"/>
+                    </font>
+                </Label>
+                <Label text="SYSTEM" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="20.0"/>
+                    </font>
+                </Label>
+            </VBox>
+
+            <Separator opacity="0.1" prefWidth="200.0"/>
+            <Button fx:id="btnHome" alignment="BASELINE_LEFT" graphicTextGap="15.0"
+                    mnemonicParsing="false" onAction="#showHome" prefHeight="45.0" prefWidth="250.0"
+                    style="-fx-background-color: transparent; -fx-cursor: hand;" text="Dashboard"
+                    textFill="WHITE">
+                <padding>
+                    <Insets left="30.0"/>
+                </padding>
+                <font>
+                    <Font name="System Bold" size="14.0"/>
+                </font>
+            </Button>
+
+            <!-- Navigation Buttons -->
+            <Label text="OPERATIONS" textFill="#a1a1a1">
+                <font>
+                    <Font size="10.0"/>
+                </font>
+                <VBox.margin>
+                    <Insets left="20.0" top="10.0"/>
+                </VBox.margin>
+            </Label>
+
+            <Button fx:id="btnRegister" alignment="BASELINE_LEFT" graphicTextGap="15.0"
+                    mnemonicParsing="false" onAction="#showRegister" prefHeight="45.0" prefWidth="250.0"
+                    style="-fx-background-color: transparent; -fx-cursor: hand;" text="User Registration"
+                    textFill="WHITE">
+                <padding>
+                    <Insets left="30.0"/>
+                </padding>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Button>
+
+            <Button fx:id="btnPledge" alignment="BASELINE_LEFT" graphicTextGap="15.0"
+                    mnemonicParsing="false" onAction="#showPledge" prefHeight="45.0" prefWidth="250.0"
+                    style="-fx-background-color: transparent; -fx-cursor: hand;" text="Record Pledge"
+                    textFill="WHITE">
+                <padding>
+                    <Insets left="30.0"/>
+                </padding>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Button>
+
+            <Button fx:id="btnRequest" alignment="BASELINE_LEFT" graphicTextGap="15.0"
+                    mnemonicParsing="false" onAction="#showRequest" prefHeight="45.0" prefWidth="250.0"
+                    style="-fx-background-color: transparent; -fx-cursor: hand;" text="Record Request"
+                    textFill="WHITE">
+                <padding>
+                    <Insets left="30.0"/>
+                </padding>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Button>
+
+            <Button fx:id="btnDelivery" alignment="BASELINE_LEFT" graphicTextGap="15.0"
+                    mnemonicParsing="false" onAction="#showDelivery" prefHeight="45.0" prefWidth="250.0"
+                    style="-fx-background-color: transparent; -fx-cursor: hand;" text="Update Delivery"
+                    textFill="WHITE">
+                <padding>
+                    <Insets left="30.0"/>
+                </padding>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Button>
+            <Button fx:id="btnDisburse" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false"
+                    onAction="#showDisburse" prefHeight="50.0" prefWidth="260.0" text="Disburse Items">
+                <padding>
+                    <Insets left="30.0"/>
+                </padding>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Button>
+            <Separator opacity="0.1" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="10.0" top="10.0"/>
+                </VBox.margin>
+            </Separator>
+
+            <Label text="ADMINISTRATION" textFill="#a1a1a1">
+                <font>
+                    <Font size="10.0"/>
+                </font>
+                <VBox.margin>
+                    <Insets left="20.0"/>
+                </VBox.margin>
+            </Label>
+
+            <Button fx:id="btnInventory" alignment="BASELINE_LEFT" graphicTextGap="15.0"
+                    mnemonicParsing="false" onAction="#showInventory" prefHeight="45.0" prefWidth="250.0"
+                    style="-fx-background-color: transparent; -fx-cursor: hand;" text="Inventory"
+                    textFill="WHITE">
+                <padding>
+                    <Insets left="30.0"/>
+                </padding>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Button>
+
+            <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="15.0"
+                    mnemonicParsing="false" onAction="#showOverview" prefHeight="45.0" prefWidth="250.0"
+                    style="-fx-background-color: transparent; -fx-cursor: hand;" text="Activity Overview"
+                    textFill="WHITE">
+                <padding>
+                    <Insets left="30.0"/>
+                </padding>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Button>
+            <Button fx:id="btnReports" alignment="BASELINE_LEFT" graphicTextGap="15.0"
+                    mnemonicParsing="false" onAction="#showReports" prefHeight="45.0" prefWidth="250.0"
+                    style="-fx-background-color: transparent; -fx-cursor: hand;"
+                    text="Reports &amp; Receipts" textFill="WHITE">
+                <padding>
+                    <Insets left="30.0"/>
+                </padding>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Button>
+        </VBox>
+        </ScrollPane>
+    </left>
+
+    <!-- CENTER CONTENT (Views load here) -->
+    <center>
+
+        <ScrollPane fx:id="contentScrollPane" fitToWidth="true"
+                    style="-fx-background-color: transparent;"
+                    BorderPane.alignment="CENTER">
+            <!--            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #f4f4f4;">-->
+            <!--                <Label text="Welcome to the Aid Management System" textFill="#909090">-->
+            <!--                    <font>-->
+            <!--                        <Font size="24.0"/>-->
+            <!--                    </font>-->
+            <!--                </Label>-->
+
+            <!--            </VBox>-->
+        </ScrollPane>
+    </center>
+
+</BorderPane>
+

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" spacing="15.0" style="-fx-background-color: transparent;"
+      xmlns="http://javafx.com/javafx/25" fx:controller="com.kimaita.harambee.controllers.RegistrationController">
+    <padding>
+        <Insets bottom="30.0" left="40.0" right="40.0" top="30.0"/>
+    </padding>
+    <children>
+        <Label text="User Registration" textFill="#2d3447">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </Label>
+        <Separator prefWidth="200.0"/>
+
+        <!-- Form Content continues same as before... -->
+        <Label text="I am a:">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+        <HBox spacing="20.0">
+            <children>
+                <RadioButton fx:id="rbRecipient" mnemonicParsing="false" selected="true" text="Recipient">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="userTypeGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="rbDonor" mnemonicParsing="false" text="Donor" toggleGroup="$userTypeGroup"/>
+            </children>
+        </HBox>
+
+        <VBox fx:id="vboxDonorType" spacing="10.0"
+              style="-fx-background-color: #eef1f6; -fx-background-radius: 5;">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+            <children>
+                <Label text="Donor Entity Type:">
+                    <font>
+                        <Font name="System Italic" size="12.0"/>
+                    </font>
+                </Label>
+                <HBox spacing="20.0">
+                    <children>
+                        <RadioButton fx:id="rbPerson" mnemonicParsing="false" selected="true" text="Person">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="donorTypeGroup"/>
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbOrganization" mnemonicParsing="false" text="Organization"
+                                     toggleGroup="$donorTypeGroup"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <Label text="Contact Details">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+
+        <GridPane hgap="10.0" vgap="10.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="120.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Label text="Full Name / Org Name:"/>
+                <TextField fx:id="txtName" promptText="Enter full name" GridPane.columnIndex="1"/>
+
+                <Label text="Email Address:" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtEmail" promptText="example@mail.com" GridPane.columnIndex="1"
+                           GridPane.rowIndex="1"/>
+
+                <Label text="Phone Number:" GridPane.rowIndex="2"/>
+                <TextField fx:id="txtPhone" promptText="0XXXXXXXXX" GridPane.columnIndex="1"
+                           GridPane.rowIndex="2"/>
+            </children>
+        </GridPane>
+
+        <Separator prefWidth="200.0"/>
+
+        <Label text="Address">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+
+        <GridPane hgap="10.0" vgap="10.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="120.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Label text="Street Address:"/>
+                <TextField fx:id="txtStreet" promptText="123 Main St" GridPane.columnIndex="1"/>
+                <Label text="City:" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtCity" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            </children>
+        </GridPane>
+
+        <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+            <children>
+                <Button fx:id="btnCancel" mnemonicParsing="false" prefWidth="80.0" text="Cancel"/>
+                <Button fx:id="btnRegister" defaultButton="true" mnemonicParsing="false" prefWidth="80.0"
+                        style="-fx-background-color: #2D3447;" text="Register" textFill="WHITE"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>
